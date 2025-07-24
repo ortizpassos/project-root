@@ -1,0 +1,25 @@
+{
+  "name": "project-root",
+  "version": "1.0.0",
+  "type": "module", 
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "lowdb": "^3.0.0",
+    "node": "^20.19.4",
+    "npm": "^11.4.2"
+  }
+}

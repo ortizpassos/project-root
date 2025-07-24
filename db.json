@@ -1,0 +1,15 @@
+{
+  "usuarios": [
+    {
+      "id": 1721831682487,
+      "username": "admin",
+      "passwordHash": "$2b$10$g3N4RZ...<resto do hash>",
+      "role": "admin"
+    }
+  ],
+  "colaboradores": [],
+  "operacoes": [],
+  "grupos": [],
+  "metas": [],
+  "contagens": []
+}
