@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão - Project Root</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Tela de Login -->
+        <div id="login-screen" class="screen active">
+            <div class="login-container">
+                <h1>Sistema de Gestão</h1>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuário:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Entrar</button>
+                </form>
+                <div id="login-error" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Dashboard Principal -->
+        <div id="dashboard-screen" class="screen">
+            <header>
+                <h1>Sistema de Gestão - Project Root</h1>
+                <div class="user-info">
+                    <span id="user-name"></span>
+                    <button id="logout-btn">Sair</button>
+                </div>
+            </header>
+
+            <nav class="main-nav">
+                <button class="nav-btn active" data-section="colaboradores">Colaboradores</button>
+                <button class="nav-btn" data-section="operacoes">Operações</button>
+                <button class="nav-btn" data-section="grupos">Grupos</button>
+                <button class="nav-btn" data-section="metas">Metas</button>
+                <button class="nav-btn" data-section="contagens">Contagens</button>
+            </nav>
+
+            <main id="main-content">
+                <!-- Seção Colaboradores -->
+                <section id="colaboradores-section" class="content-section active">
+                    <h2>Gestão de Colaboradores</h2>
+                    
+                    <div class="action-bar">
+                        <button id="add-colaborador-btn" class="btn-primary">Adicionar Colaborador</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="colaboradores-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Grupo</th>
+                                    <th>Operação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Seção Operações -->
+                <section id="operacoes-section" class="content-section">
+                    <h2>Gestão de Operações</h2>
+                    
+                    <div class="action-bar">
+                        <button id="add-operacao-btn" class="btn-primary">Adicionar Operação</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="operacoes-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome da Operação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Seção Grupos -->
+                <section id="grupos-section" class="content-section">
+                    <h2>Gestão de Grupos</h2>
+                    
+                    <div class="action-bar">
+                        <button id="add-grupo-btn" class="btn-primary">Adicionar Grupo</button>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="grupos-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Grupo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Seção Metas -->
+                <section id="metas-section" class="content-section">
+                    <h2>Gestão de Metas</h2>
+                    <p>Funcionalidade em desenvolvimento...</p>
+                </section>
+
+                <!-- Seção Contagens -->
+                <section id="contagens-section" class="content-section">
+                    <h2>Gestão de Contagens</h2>
+                    <p>Funcionalidade em desenvolvimento...</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar/Editar Colaborador -->
+    <div id="colaborador-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="colaborador-modal-title">Adicionar Colaborador</h3>
+            <form id="colaborador-form">
+                <div class="form-group">
+                    <label for="colaborador-nome">Nome:</label>
+                    <input type="text" id="colaborador-nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="colaborador-senha">Senha (4 dígitos):</label>
+                    <input type="password" id="colaborador-senha" name="senha" pattern="[0-9]{4}" maxlength="4" required>
+                </div>
+                <div class="form-group">
+                    <label for="colaborador-grupo">Grupo:</label>
+                    <select id="colaborador-grupo" name="grupo" required>
+                        <option value="">Selecione um grupo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="colaborador-operacao">Operação:</label>
+                    <select id="colaborador-operacao" name="operacao" required>
+                        <option value="">Selecione uma operação</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('colaborador-modal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar Operação -->
+    <div id="operacao-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Adicionar Operação</h3>
+            <form id="operacao-form">
+                <div class="form-group">
+                    <label for="operacao-nome">Nome da Operação:</label>
+                    <input type="text" id="operacao-nome" name="nome" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('operacao-modal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar Grupo -->
+    <div id="grupo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Adicionar Grupo</h3>
+            <form id="grupo-form">
+                <div class="form-group">
+                    <label for="grupo-nome">Nome do Grupo:</label>
+                    <input type="text" id="grupo-nome" name="nome" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('grupo-modal')">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
